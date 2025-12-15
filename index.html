@@ -15,22 +15,43 @@
             position: relative;
         }
         body::before {
-            content: url('images/minyatur-sol-ust.png'); 
+            content: url('images/minyatur-sol-ust.png');
             position: absolute;
             top: 10px;
             left: 10px;
-            opacity: 0.12;
+            width: 80px;   /* Sabit küçük boyut */
+            height: auto;
+            opacity: 0.15;
             pointer-events: none;
             z-index: -1;
         }
         body::after {
-            content: url('images/minyatur-sag-alt.png'); 
+            content: url('images/minyatur-sag-alt.png');
             position: absolute;
             bottom: 10px;
             right: 10px;
-            opacity: 0.12;
+            width: 80px;   /* Sabit küçük boyut */
+            height: auto;
+            opacity: 0.15;
             pointer-events: none;
             z-index: -1;
+        }
+        /* Mobilde daha da küçült */
+        /* Mobilde daha da küçült */
+        @media (max-width: 600px) {
+            body::before,
+            body::after {
+                width: 50px;   /* Mobilde daha küçük */
+                opacity: 0.12;
+            }
+            body::before {
+                top: 5px;
+                left: 5px;
+            }
+            body::after {
+                bottom: 5px;
+                right: 5px;
+            }
         }
         h1 { 
             color: #FFD700; 
@@ -335,3 +356,4 @@
     </footer>
 </body>
 </html>
+
