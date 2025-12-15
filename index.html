@@ -7,71 +7,116 @@
     <style>
         body { 
             font-family: 'Arial', sans-serif; 
-            background: linear-gradient(to bottom, #f9f9f9, #e8f4f8); 
+            background: linear-gradient(to bottom, rgba(249, 249, 249, 0.92), rgba(232, 244, 248, 0.92)), rgba(180, 140, 255, 0.06); 
             margin: 0; 
             padding: 10px; 
             text-align: center; 
             line-height: 1.3;
+            position: relative;
+        }
+        body::before {
+            content: url('images/minyatur-sol-ust.png'); 
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: -1;
+        }
+        body::after {
+            content: url('images/minyatur-sag-alt.png'); 
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: -1;
         }
         h1 { 
-            color: #2c3e50; 
+            color: #FFD700; 
+            font-family: 'Georgia', serif; 
             margin-bottom: 5px; 
-            font-size: 2.2em;
+            font-size: 2.5em; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2); 
         }
         .slogan {
             color: #7f8c8d;
             font-family: 'cursive', 'Brush Script MT', cursive;
             font-style: italic;
-            margin-bottom: 15px;
-            font-size: 1.4em; /* Büyütülmüş */
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+        .info-text {
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .contact {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin: 20px 0;
+        }
+        .contact strong {
+            color: #E91E63;
         }
         h2 { 
-            color: #34495e; 
-            border-bottom: 1px solid #3498db; 
-            padding-bottom: 3px; 
-            margin: 15px 0 8px 0;
-            font-size: 1.2em;
+            color: #8E24AA; 
+            font-weight: bold;
+            font-size: 1.6em; 
+            border-bottom: 2px solid #BA68C8; 
+            padding-bottom: 8px; 
+            margin: 40px 0 20px 0;
         }
         .menu-item { 
             background: white; 
             margin: 6px auto; 
-            padding: 8px; 
-            border-radius: 6px; 
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Hafif minimalist gölge */
-            border: 1px solid #ecf0f1; /* İnce çizgi için border */
+            padding: 12px; 
+            border-radius: 15px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08); 
+            border: 1px solid #ecf0f1; 
             max-width: 320px; 
             text-align: left; 
             transition: transform 0.2s;
-            min-height: 120px; /* Boyut dengesi için min-height */
+            min-height: 180px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
         }
         .menu-item:hover { 
             transform: scale(1.005); 
-            box-shadow: 0 2px 6px rgba(0,0,0,0.12); /* Hover'da hafif artan gölge */
+            box-shadow: 0 2px 6px rgba(0,0,0,0.12); 
         }
         .menu-item img { 
             width: 100%; 
             max-width: 240px; 
             height: auto; 
-            border-radius: 4px; 
-            margin-bottom: 4px;
+            border-radius: 10px; 
+            margin-bottom: 8px;
         }
         .menu-item h3 { 
             color: #e74c3c; 
             margin: 4px 0; 
             font-size: 1.1em;
         }
+        .ikram { 
+            color: #8BC34A; 
+            font-weight: bold;
+            font-size: 0.9em;
+            margin: 2px 0;
+        }
         .fiyat { 
             font-weight: bolder; 
             color: #8BC34A; 
-            font-size: 1.15em; 
-            margin-top: 4px;
+            font-size: 1.2em; 
+            margin-top: auto; 
         }
         .kategori { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 10px; 
             max-width: 100%; 
-            margin: 0 auto;
+            margin: 0 auto 40px auto; 
         }
         .section-header {
             grid-column: 1 / -1;
@@ -79,139 +124,214 @@
         }
         @media (max-width: 600px) { 
             body { padding: 8px; } 
-            h1 { font-size: 1.8em; } 
+            h1 { font-size: 2em; } 
             .slogan { font-size: 1.2em; }
-            .kategori { grid-template-columns: 1fr; gap: 6px; }
-            .menu-item { margin: 4px auto; padding: 6px; min-height: 110px; }
+            h2 { font-size: 1.4em; margin: 30px 0 15px 0; }
+            .kategori { grid-template-columns: 1fr; gap: 6px; margin-bottom: 30px; }
+            .menu-item { margin: 4px auto; padding: 10px; min-height: 160px; }
             .menu-item img { max-width: 180px; }
+            .contact { font-size: 1.1em; }
         }
     </style>
 </head>
 <body>
     <h1>Saklı Köşe</h1>
     <p class="slogan">Güvenilir ellerden sıcak hizmet</p>
-    <p>QR kodla buradasın – lezzetli seçeneklerimizi keşfet. Resimler için images/ klasörüne yükle.</p>
+    
+    <p class="info-text">Tüm Menülerde Salata, Çorba ve Ayran Mevcuttur.</p>
+    
+    <div class="contact">
+        <strong>Alo Paket:</strong> 0545 999 30 96<br>
+        <strong>Paket:</strong> 0352 222 03 02
+    </div>
+    
+    <p>QR kodla buradasın – lezzetli seçeneklerimizi keşfet.</p>
     
     <section class="kategori">
         <div class="section-header">
-            <h2>Tavuklu Lezzetler</h2>
+            <h2>Bahçeden Menüler</h2>
         </div>
-        <div class="menu-item">
-            <img src="images/meksika-tavuk.jpg" alt="Meksika Soslu Tavuk">
-            <h3>Meksika Soslu Tavuk + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>160 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/sweet-chili-tavuk.jpg" alt="Sweet Chili Soslu Tavuk">
-            <h3>Sweet Chili Soslu Tavuk + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>160 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/soya-tavuk.jpg" alt="Soya Soslu Tavuk">
-            <h3>Soya Soslu Tavuk + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>160 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/kozlu-tavuk.jpg" alt="Közlü Soslu Tavuk">
-            <h3>Közlü Soslu Tavuk + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>160 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/barbeku-tavuk.jpg" alt="Barbekü Soslu Tavuk">
-            <h3>Barbekü Soslu Tavuk + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>160 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/mayhos-tavuk.jpg" alt="Mayhoş Soslu Tavuk">
-            <h3>Mayhoş Soslu Tavuk + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>160 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/dag-kekikli-tavuk.jpg" alt="Dağ Kekikli Tavuk">
-            <h3>Dağ Kekikli Tavuk + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>160 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/kori-tavuk.jpg" alt="Köri Soslu Tavuk">
-            <h3>Köri Soslu Tavuk + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>160 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/pilav-meksika-tavuk.jpg" alt="Pilav Üstü Meksika Tavuk">
-            <h3>Pilav Üstü Meksika Tavuk + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>140 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/pilav-kori-tavuk.jpg" alt="Pilav Üstü Köri Tavuk">
-            <h3>Pilav Üstü Köri Tavuk + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>140 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/pilav-barbeku-tavuk.jpg" alt="Pilav Üstü Barbekü Tavuk">
-            <h3>Pilav Üstü Barbekü Tavuk + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>140 TL</span></p>
-        </div>
-    </section>
-    
-    <section class="kategori">
-        <div class="section-header">
-            <h2>Diğer Lezzetler</h2>
-        </div>
-        <div class="menu-item">
-            <img src="images/kori-makarna.jpg" alt="Köri Soslu Makarna">
-            <h3>Köri Soslu Makarna + Salata</h3>
-            <p class="fiyat">Fiyat: <span>150 TL</span></p>
-        </div>
-        
         <div class="menu-item">
             <img src="images/ton-balikli-salata.jpg" alt="Ton Balıklı Salata">
-            <h3>Ton Balıklı Salata + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>150 TL</span></p>
+            <h3>Ton Balıklı Salata</h3>
+            <p class="ikram">+ Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>170 TL</span></p>
         </div>
-        
-        <div class="menu-item">
-            <img src="images/penne-arabiata.jpg" alt="Penne Arabiata" onerror="this.style.display='none'">
-            <h3>Penne Arabiata + Salata</h3>
-            <p class="fiyat">Fiyat: <span>140 TL</span></p>
-        </div>
-        
         <div class="menu-item">
             <img src="images/sezar-salata.jpg" alt="Sezar Salata">
-            <h3>Sezar Salata + Çorba</h3>
+            <h3>Sezar Salata</h3>
+            <p class="ikram">+ Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>170 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/mevsim-salata.jpg" alt="Mevsim Salata">
+            <h3>Mevsim Salata</h3>
+            <p class="ikram">+ Çorba + Ayran</p>
             <p class="fiyat">Fiyat: <span>140 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/pesto-penne.jpg" alt="Pesto Soslu Penne">
-            <h3>Pesto Soslu Penne + Salata</h3>
-            <p class="fiyat">Fiyat: <span>110 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/sebzeli-penne.jpg" alt="Sebzeli Penne">
-            <h3>Sebzeli Penne + Salata</h3>
-            <p class="fiyat">Fiyat: <span>110 TL</span></p>
-        </div>
-        
-        <div class="menu-item">
-            <img src="images/tantuni.jpg" alt="Tantuni">
-            <h3>Tantuni + Çorba</h3>
-            <p class="fiyat">Fiyat: <span>125 TL</span></p>
         </div>
     </section>
     
-    <footer style="margin-top: 25px; color: #777; font-size: 0.8em;">
-        <p>Bize ulaş: info@saklikose.com | © 2025 Saklı Köşe – Menü güncellemeleri anlık!</p>
+    <section class="kategori">
+        <div class="section-header">
+            <h2>Makarna Menüler</h2>
+        </div>
+        <div class="menu-item">
+            <img src="images/kremali-tavuklu-penne.jpg" alt="Kremalı Tavuklu Penne">
+            <h3>Kremalı Tavuklu Penne</h3>
+            <p class="ikram">+ Salata + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>190 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/kori-soslu-penne.jpg" alt="Köri Soslu Penne">
+            <h3>Köri Soslu Penne</h3>
+            <p class="ikram">+ Salata + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>160 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/pesto-soslu-penne.jpg" alt="Pesto Soslu Penne">
+            <h3>Pesto Soslu Penne</h3>
+            <p class="ikram">+ Salata + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>160 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/penne-arabiata.jpg" alt="Penne Arabiata">
+            <h3>Penne Arabiata</h3>
+            <p class="ikram">+ Salata + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>160 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/kremali-mantarli-penne.jpg" alt="Kremalı Mantarlı Penne">
+            <h3>Kremalı Mantarlı Penne</h3>
+            <p class="ikram">+ Salata + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>160 TL</span></p>
+        </div>
+    </section>
+    
+    <!-- Tantuni artık ayrı, kategori başlığı olmadan tek başına -->
+    <section class="kategori">
+        <div class="menu-item">
+            <img src="images/tantuni.jpg" alt="Tantuni">
+            <h3>Tantuni</h3>
+            <p class="ikram">+ Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>160 TL</span></p>
+        </div>
+    </section>
+    
+    <section class="kategori">
+        <div class="section-header">
+            <h2>Tavada Tavuk Menüler</h2>
+        </div>
+        <div class="menu-item">
+            <img src="images/meksika-soslu-tavuk.jpg" alt="Meksika Soslu Tavuk">
+            <h3>Meksika Soslu Tavuk</h3>
+            <p class="ikram">+ Salata + Makarna + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/sweet-chili-soslu-tavuk.jpg" alt="Sweet Chili Soslu Tavuk">
+            <h3>Sweet Chili Soslu Tavuk</h3>
+            <p class="ikram">+ Salata + Makarna + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/barbeku-soslu-tavuk.jpg" alt="Barbekü Soslu Tavuk">
+            <h3>Barbekü Soslu Tavuk</h3>
+            <p class="ikram">+ Salata + Makarna + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/soya-soslu-tavuk.jpg" alt="Soya Soslu Tavuk">
+            <h3>Soya Soslu Tavuk</h3>
+            <p class="ikram">+ Salata + Makarna + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/dag-kekikli-tavuk.jpg" alt="Dağ Kekikli Tavuk">
+            <h3>Dağ Kekikli Tavuk</h3>
+            <p class="ikram">+ Salata + Makarna + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/kozluce-soslu-tavuk.jpg" alt="Közlüce Soslu Tavuk">
+            <h3>Közlüce Soslu Tavuk</h3>
+            <p class="ikram">+ Salata + Makarna + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/kori-soslu-tavuk.jpg" alt="Köri Soslu Tavuk">
+            <h3>Köri Soslu Tavuk</h3>
+            <p class="ikram">+ Salata + Makarna + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/kremali-mantarli-tavuk.jpg" alt="Kremalı Mantarlı Tavuk">
+            <h3>Kremalı Mantarlı Tavuk</h3>
+            <p class="ikram">+ Salata + Makarna + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/cafe-de-paris-soslu-tavuk.jpg" alt="Cafe De Paris Soslu Tavuk">
+            <h3>Cafe De Paris Soslu Tavuk</h3>
+            <p class="ikram">+ Salata + Makarna + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+    </section>
+    
+    <section class="kategori">
+        <div class="section-header">
+            <h2>Pilav Üstü Tavuk Menüler</h2>
+        </div>
+        <div class="menu-item">
+            <img src="images/korili-pilav.jpg" alt="Körili Pilav">
+            <h3>Körili Pilav</h3>
+            <p class="ikram">+ Salata + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/meksika-pilav.jpg" alt="Meksika Pilav">
+            <h3>Meksika Pilav</h3>
+            <p class="ikram">+ Salata + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/barbeku-pilav.jpg" alt="Barbekü Pilav">
+            <h3>Barbekü Pilav</h3>
+            <p class="ikram">+ Salata + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/dag-kekikli-pilav.jpg" alt="Dağ Kekikli Pilav">
+            <h3>Dağ Kekikli Pilav</h3>
+            <p class="ikram">+ Salata + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/kozluce-soslu-pilav.jpg" alt="Közlüce Soslu Pilav">
+            <h3>Közlüce Soslu Pilav</h3>
+            <p class="ikram">+ Salata + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+        <div class="menu-item">
+            <img src="images/sweet-chili-pilav.jpg" alt="Sweet Chili Pilav">
+            <h3>Sweet Chili Pilav</h3>
+            <p class="ikram">+ Salata + Çorba + Ayran</p>
+            <p class="fiyat">Fiyat: <span>200 TL</span></p>
+        </div>
+    </section>
+    
+    <section class="kategori">
+        <div class="section-header">
+            <h2>Çorba</h2>
+        </div>
+        <div class="menu-item">
+            <img src="images/corba.jpg" alt="Çorba">
+            <h3>Çorba</h3>
+            <p class="fiyat">Fiyat: <span>80 TL</span></p>
+        </div>
+    </section>
+    
+    <footer style="margin-top: 40px; color: #777; font-size: 0.8em;">
+        <p>© 2025 Saklı Köşe – Menü güncellemeleri anlık!</p>
     </footer>
 </body>
 </html>
